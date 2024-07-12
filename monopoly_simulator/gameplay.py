@@ -354,12 +354,12 @@ def play_game():
     """
 
     try:
-        os.makedirs('../single_tournament/')
+        os.makedirs('single_tournament/')
         print('Creating folder and logging gameplay.')
     except:
         print('Logging gameplay.')
 
-    logger = log_file_create('../single_tournament/seed_6.log')
+    logger = log_file_create('single_tournament/seed_2.log')
     player_decision_agents = dict()
     # for p in ['player_1','player_3']:
     #     player_decision_agents[p] = simple_decision_agent_1.decision_agent_methods
@@ -369,7 +369,7 @@ def play_game():
     player_decision_agents['player_3'] = Agent(**background_agent_v3_1.decision_agent_methods)
     player_decision_agents['player_4'] = Agent(**background_agent_v3_1.decision_agent_methods)
 
-    game_elements = set_up_board('../monopoly_game_schema_v1-2.json',
+    game_elements = set_up_board('monopoly_game_schema_v1-2.json',
                                  player_decision_agents)
 
     #Comment out the above line and uncomment the piece of code to read the gameboard state from an existing json file so that
@@ -502,4 +502,4 @@ def play_game_in_tournament(game_seed, novelty_info=False, inject_novelty_functi
                     return winner
 
 
-# play_game()
+play_game()

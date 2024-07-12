@@ -1,0 +1,67 @@
+2024-07-12 14:39:16,957:monopoly_simulator.logging_info.init_game_elements:DEBUG:Beginning game set up...
+2024-07-12 14:39:16,958:monopoly_simulator.logging_info.init_game_elements:DEBUG:Successfully instantiated and initialized bank.
+2024-07-12 14:39:16,958:monopoly_simulator.logging_info.init_game_elements:DEBUG:Successfully instantiated and initialized all locations on board.
+2024-07-12 14:39:16,958:monopoly_simulator.logging_info.init_game_elements:DEBUG:Successfully instantiated and initialized dies
+2024-07-12 14:39:16,958:monopoly_simulator.logging_info.init_game_elements:DEBUG:Successfully instantiated and initialized cards
+2024-07-12 14:39:16,959:monopoly_simulator.logging_info.init_game_elements:DEBUG:Successfully instantiated and initialized players and decision agents
+2024-07-12 14:39:16,959:monopoly_simulator.logging_info.init_game_elements:DEBUG:Successfully instantiated game history data structures
+2024-07-12 14:39:20,541:monopoly_simulator.logging_info:DEBUG:size of board 40
+2024-07-12 14:39:20,558:monopoly_simulator.logging_info:DEBUG:players will play in the following order: player_3->player_4->player_2->player_1
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info:DEBUG:Beginning play. Rolling first die...
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:We are in the pre-roll phase for player_3
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:computing allowable pre-roll actions for player_3
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.background_agent:DEBUG:player_3: I am skipping turn
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:Executing _execute_action for player_3
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.action_choices:DEBUG:player is skipping turn
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:We are in the out-of-turn phase for player_4
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:computing allowable out-of-turn actions for player_4
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.background_agent:DEBUG:player_4: I am skipping turn
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:Executing _execute_action for player_4
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.action_choices:DEBUG:player is skipping turn
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:We are in the out-of-turn phase for player_2
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:computing allowable out-of-turn actions for player_2
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.background_agent:DEBUG:player_2: I am skipping turn
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:Executing _execute_action for player_2
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.action_choices:DEBUG:player is skipping turn
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:We are in the out-of-turn phase for player_1
+2024-07-12 14:39:20,559:monopoly_simulator.logging_info.player:DEBUG:computing allowable out-of-turn actions for player_1
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.background_agent:DEBUG:player_1: I am skipping turn
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.player:DEBUG:Executing _execute_action for player_1
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.action_choices:DEBUG:player is skipping turn
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.action_choices:DEBUG:rolling die...
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info:DEBUG:dies have come up [np.int64(4), np.int64(3)]
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.card_utility_actions:DEBUG:executing move_player_after_die_roll for player_3 by 7 relative steps forward.
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.player:DEBUG:Player is currently in position Go
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.player:DEBUG: and is moving to position Chance
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.player:DEBUG:player_3 is on an action location, namely Chance. Performing action...
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.card_utility_actions:DEBUG:player_3 is picking card from chance.
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.card_utility_actions:DEBUG:player_3 picked card go_to_illinois_avenue
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.card_utility_actions:DEBUG:executing move_player__check_for_go for player_3
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.card_utility_actions:DEBUG:destination specified on card is Illinois Avenue
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.player:DEBUG:Player is currently in position Chance
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.player:DEBUG: and is moving to position Illinois Avenue
+2024-07-12 14:39:20,560:monopoly_simulator.logging_info.player:DEBUG:player_3 is on a real estate location, namely Illinois Avenue
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Illinois Avenue is owned by Bank. Setting _option_to_buy to true for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:We are in the post-roll phase for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:computing allowable post-roll actions for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.background_agent:DEBUG:player_3: I will attempt to buy Illinois Avenue from the bank.
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.background_agent:DEBUG:player_3: I am attempting to buy property Illinois Avenue
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Executing _execute_action for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.action_choices:DEBUG:Charging player_3 amount 240.0 for asset Illinois Avenue
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:player_3 is being charged amount: 240.0
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Before charge, player has cash 1500.0
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:player_3 now has cash: 1260.0
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Bank received amount 240.0 due to transaction from player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Liquid Cash remaining with Bank = 10240.0
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.location:DEBUG:attempting to update asset Illinois Avenue to reflect new owner: player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Looking to add asset Illinois Avenue to portfolio of player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:total no. of assets now owned by player: 1
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.location:DEBUG:Asset ownership update succeeded.
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.action_choices:DEBUG:Illinois Avenue ownership has been updated! Resetting option_to_buy for player and returning code successful action code
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Executing reset_option_to_buy for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Received code 1. Continuing iteration...
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:computing allowable post-roll actions for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Executing _force_buy_outcome for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Executing reset_option_to_buy for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.player:DEBUG:Executing _execute_action for player_3
+2024-07-12 14:39:20,561:monopoly_simulator.logging_info.action_choices:DEBUG:player has concluded actions

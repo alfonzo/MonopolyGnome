@@ -9,6 +9,11 @@ from kivy.graphics import Rectangle, Ellipse, InstructionGroup
 from kivy.core.window import Window, WindowBase
 from kivy.properties import ListProperty, ObjectProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
+
+from kivy.uix.screenmanager import Screen
+from kivy.graphics import InstructionGroup
+from kivy.clock import Clock, mainthread
+
 import threading
 import time
 import os
@@ -16,10 +21,10 @@ from monopoly_simulator import initialize_game_elements
 from monopoly_simulator.action_choices import roll_die
 import numpy as np
 from monopoly_simulator.card_utility_actions import move_player_after_die_roll
-from monopoly_simulator import background_agent_v1
-from monopoly_simulator import background_agent_v2
-from monopoly_simulator import background_agent_v3
-from monopoly_simulator import simple_decision_agent_1
+from monopoly_simulator import background_agent_v3_1
+# from monopoly_simulator import background_agent_v2
+# from monopoly_simulator import background_agent_v3
+# from monopoly_simulator import simple_decision_agent_1
 from monopoly_simulator import diagnostics
 from monopoly_simulator import novelty_generator
 from monopoly_simulator.agent import Agent
@@ -220,7 +225,7 @@ class CreateBoardWindow(Screen):
             print('PAUSING THE GAME.... CLICK MONOPOLY BUTTON TO RESUME GAME')
 
 
-    def simulate_game_instance(self, history_log_file=None, np_seed=838885):
+    def simulate_game_instance(self, history_log_file=None, np_seed=2):
         """
         Simulate a game instance.
         :param game_elements: The dict output by set_up_board
@@ -404,7 +409,8 @@ class CreateBoardWindow(Screen):
         self.game_elem['history']['return'] = list()
 
     def update_board(self):
-        self.canvas.after.clear()
+        Clock.schedule_once(self.create_instruction_group_on_main_thread)
+
         self.players = []
         pos_x = 0.9 - self.each_tile_size + 0.01
         pos_y = 0.11
@@ -579,6 +585,16 @@ class CreateBoardWindow(Screen):
         popup_window = Popup(title=property_name_mod, content=show, size_hint=(None, None), size=(400, 400))
         popup_window.open()
 
+    @mainthread
+    def clear_canvas(self, *args):
+        self.canvas.after.clear()
+
+    @mainthread
+    def create_instruction_group(self, dt=None):
+        self.obj_instr_player = InstructionGroup()
+
+    def create_instruction_group_on_main_thread(self, dt=None):
+        Clock.schedule_once(self.create_instruction_group)
 
 class P(FloatLayout):
     pass
@@ -606,9 +622,9 @@ class PlayerWidget(Ellipse):
 
 class MyMainApp(App):
 
-    def __init__(self, game_elem):
-        super().__init__()
-        self.game_elem = game_elem
+    def __init__(self, game_elements, **kwargs):
+        super(MyMainApp, self).__init__(**kwargs)
+        self.game_elements = game_elements
 
     def build(self):
         print('Game Visualization being rendered')
@@ -619,7 +635,7 @@ class MyMainApp(App):
     def run_func(self):
         Builder.load_file("boardlayout.kv")
         sm = WindowManager()
-        screens = [CreateBoardWindow(self.game_elem)]
+        screens = [CreateBoardWindow(self.game_elements)]
         for screen in screens:
             sm.add_widget(screen)
         self.screen = screens[0]
@@ -696,21 +712,25 @@ def inject_class_novelty_1(current_gameboard, novelty_schema=None):
     granularityNovelty.granularity_novelty(current_gameboard, current_gameboard['location_objects']['Park Place'], 52)
     '''
 
-try:
-    os.makedirs('../single_tournament/')
-    print('Creating folder and logging gameplay.')
-except:
-    print('Logging gameplay.')
 
-##Logs game play in the single_tournament folder
-logger = log_file_create('../single_tournament/seed_6.log')
-player_decision_agents = dict()
-player_decision_agents['player_1'] = Agent(**background_agent_v1.decision_agent_methods)
-player_decision_agents['player_2'] = Agent(**background_agent_v1.decision_agent_methods)
-player_decision_agents['player_3'] = Agent(**background_agent_v1.decision_agent_methods)
-player_decision_agents['player_4'] = Agent(**background_agent_v1.decision_agent_methods)
-game_elements = set_up_board('../monopoly_game_schema_v1-2.json',
-                             player_decision_agents)
-inject_class_novelty_1(game_elements)
-MyMainApp(game_elements).run()
 
+if __name__ == '__main__':
+    try:
+        os.makedirs('single_tournament/')
+        print('Creating folder and logging gameplay.')
+    except:
+        print('Logging gameplay.')
+
+    # Logs game play in the single_tournament folder
+    logger = log_file_create('single_tournament/seed_2_GUI.log')
+
+    player_decision_agents = dict()
+    player_decision_agents['player_1'] = Agent(**background_agent_v3_1.decision_agent_methods)
+    player_decision_agents['player_2'] = Agent(**background_agent_v3_1.decision_agent_methods)
+    player_decision_agents['player_3'] = Agent(**background_agent_v3_1.decision_agent_methods)
+    player_decision_agents['player_4'] = Agent(**background_agent_v3_1.decision_agent_methods)
+
+    game_elements = set_up_board('monopoly_game_schema_v1-2.json', player_decision_agents)
+    inject_class_novelty_1(game_elements)
+
+    MyMainApp(game_elements).run()
